@@ -1,11 +1,5 @@
 # Tugas Akhir
 ## Authors
-Ahmad Imam Fauzan		1906353542
-Cut Zahra Nabila		1906399934
-Dewinta Dyah Maharani	1906399562
-Farhan Ahmad Primaditya	1906353460
-Tsanaa Patricia Khonsaa	1906353914
-
 * **Ahmad Imam Fauzan** - *1906353542* - *C*
 * **Cut Zahra Nabila** - *1906399934* - *C*
 * **Dewinta Dyah Maharani** - *1906399562* - *C*
