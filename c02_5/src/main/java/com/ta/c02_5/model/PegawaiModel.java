@@ -64,7 +64,7 @@ public class PegawaiModel implements Serializable{
 
     //Relasi dengan Role
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_role", referencedColumnName = "idRole", nullable = false)
+    @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private RoleModel role;

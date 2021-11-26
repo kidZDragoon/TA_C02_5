@@ -13,7 +13,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -51,14 +50,14 @@ public class DeliveryModel {
 
     // Relasi dengan RequestUpdateItemModel
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_request_update_item", referencedColumnName = "idRequestUpdateItem")
+    @JoinColumn(name = "id_request_update_item", referencedColumnName = "id_request_update_item")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private RequestUpdateItemModel requestUpdateItem;
 
     // Request dengan PegawaiModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_pegawai", referencedColumnName = "idPegawai", nullable = false)
+    @JoinColumn(name = "id_pegawai", referencedColumnName = "id_pegawai", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PegawaiModel pegawai;
 

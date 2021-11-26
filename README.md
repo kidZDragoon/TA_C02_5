@@ -17,7 +17,7 @@
 | 1906353460 | Farhan Ahmad Primaditya | 10 - Menampilkan Daftar Request Update Item |
 | 1906353914 | Tsanaa Patricia Khonsaa | 2 & 3 - Login & Logout |
 ---
-**Kontrak Tahap 3 Tugas Akhir**
+**Kontrak Tahap 2 Tugas Akhir**
 
 | NPM | Nama Lengkap | Fitur yang akan diselesaikan  |
 | ----------| --- | ---------- | 
