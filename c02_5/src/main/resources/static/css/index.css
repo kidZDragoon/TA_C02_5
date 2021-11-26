@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
+* {
+    font-family: 'Poppins', serif;
+}
+
+:root {
+    --primerblue: #1F65CF;
+    --secondaryblue: #9FD1FC;
+    --oldblue: #002E73;
+    --danger: #CF1F42;
+}
+
+nav {
+    background-color: var(--oldblue);
+}
+
+.nav-link, .nav-item {
+    color: white;
+    font-weight: 300;
+}
+
+.subjudul {
+    font-size: 32px;
+    line-height: 48px;
+    color: var(--oldblue);
+}
+
+.judul {
+    font-family: Poppins;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 108px;
+    color: var(--primerblue);
+}
+
+.teks {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.btn-primary {
+    background-color: var(--primerblue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 24px;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    background-color: var(--oldblue);
+    color: var(--secondaryblue);
+}
+
+.btn-secondary {
+    background-color: var(--secondaryblue);
+    color: var(--oldblue);
+    border: none;
+    border-radius: 12px;
+    padding: 8px 24px;
+}

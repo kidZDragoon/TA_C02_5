@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(home)"></nav>
+
+<div class="container-fluid">
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+          <div class="col-md-6">
+              <img class="img-fluid" th:src="@{img/illustration.png}">
+          </div>
+          <div class="col-md-6">
+              <br><br>
+              <h2 class="subjudul">Selamat datang di</h2>
+              <h1 class="judul">SI-FACTORY</h1>
+              <p class="teks">Saatnya mengelola pabrik-pabrik dengan praktis!</p>
+              <br>
+              <a th:href="@{/}" class="btn btn-primary">Start Now</a>
+              <a th:href="@{/}" class="btn btn-secondary">Explore</a>
+          </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
