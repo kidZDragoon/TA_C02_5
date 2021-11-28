@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -36,8 +36,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='pengguna'} ? 'active'" th:href="@{/}">
-                    Pengguna<span class="sr-only"></span>
+                <li class="nav-item dropdown"><a type="submit" class="nav-link font-weight-bold" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Pengguna </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a type="submit" class="nav-link text-dark" th:href="@{/user/addUser}"> Tambah Pengguna </a></li>
+                    </ul>
                 </a></li>
                 <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='pegawai'} ? 'active'" th:href="@{/}">
                     Pegawai<span class="sr-only"></span>

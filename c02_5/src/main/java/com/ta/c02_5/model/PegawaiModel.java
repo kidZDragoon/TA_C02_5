@@ -63,11 +63,12 @@ public class PegawaiModel implements Serializable{
     private List<DeliveryModel> listDelivery;
 
     //Relasi dengan Role
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role", referencedColumnName = "id_role", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private RoleModel role;
+
 
     @NotNull
     @Column(name = "counter", nullable = false)
