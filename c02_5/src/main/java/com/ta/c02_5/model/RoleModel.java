@@ -40,4 +40,5 @@ public class RoleModel implements Serializable {
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PegawaiModel> listPegawai;
+
 }

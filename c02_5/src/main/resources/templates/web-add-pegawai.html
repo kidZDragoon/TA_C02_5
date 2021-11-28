@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>21 Cineplux</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(home)"></nav>
+<br>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Tambah User Baru</div>
+                <div class="card-body">
+                    <form th:action="@{/user/addUser}" method="POST">
+                        <label>User Name</label>
+                        <input type="text" name="username" class="form-control" />
+                        <br>
+                        <label>Nama</label>
+                        <input type="text" name="nama" class="form-control" />
+                        <br>
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" />
+                        <br>
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" />
+                        <br>
+                        <label>Role</label>
+                        <select name="role" class="form-control">
+                            <option selected value=""> -- Pilih Role -- </option>
+                            <option th:each="role : ${listRole}" th:value="${role.idRole}" th:text="${role.namaRole}"></option>
+                        </select>
+                        <br>
+                        <label>tanggalLahir</label>
+                        <input type="date" class="col-sm-8 form-control input-sm" name="tanggalLahir" required>
+                        <br>
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+</body>
+
+</html>
