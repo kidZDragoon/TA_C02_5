@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SI FACTORY</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(item)"></nav>
+
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 class="judul" style="text-align: center">Detail Item</h2>
+                <br>
+                <p th:text="'UUID Item    : ' + ${item.uuid}"></p>
+                <p th:text="'Nama Item  : ' + ${item.nama}"></p>
+                <p th:text="'Harga Item: ' + ${item.harga}"></p>
+                <p th:text="'Stok Item: ' + ${item.stok}"></p>
+                <p th:text="'Kategori Item: ' + ${item.kategori}"></p>
+                <a class="btn btn-primary" th:href="@{/item/viewall/}">Kembali</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

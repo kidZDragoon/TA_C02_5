@@ -38,8 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder)
-//                .withUser("pegawaidummy").password(encoder.encode("pegawai1"))
-//                .roles("Staff Gudang");
+//                .withUser("AdminFactory").password(encoder.encode("Admin123"))
+//                .roles("Admin");
 //    }
 
     @Autowired
