@@ -14,15 +14,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
-public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
-    private PegawaiDB pegawaiDB;
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        PegawaiModel pegawai = pegawaiDB.findByUsername(username);
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(pegawai.getRole().getNamaRole()));
-        return new User(pegawai.getUsername(), pegawai.getPassword(), grantedAuthorities);
-    }
-}
+//@Service
+//public class UserDetailsServiceImpl implements UserDetailsService {
+//    @Autowired
+//    private PegawaiDB pegawaiDB;
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        PegawaiModel pegawai = pegawaiDB.findByUsername(username);
+//        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+//        grantedAuthorities.add(new SimpleGrantedAuthority(pegawai.getRole().getNamaRole()));
+//        return new User(pegawai.getUsername(), pegawai.getPassword(), grantedAuthorities);
+//    }
+//}
