@@ -36,7 +36,6 @@ public class PegawaiServiceImpl implements PegawaiService{
         return pegawaiDB.findByUsername(username);
     }
 
-
     @Override
     public List<PegawaiModel> getListUser() {
         return pegawaiDB.findAll();

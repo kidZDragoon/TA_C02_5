@@ -44,10 +44,13 @@
                 <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='pegawai'} ? 'active'" th:href="@{/}">
                     Pegawai<span class="sr-only"></span>
                 </a></li>
+                <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='produksi'} ? 'active'" th:href="@{/produksi/viewall}">
+                    Produksi<span class="sr-only"></span>
+                </a></li>
                 <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='item'} ? 'active'" th:href="@{/item/viewall}">
                     Item<span class="sr-only"></span>
                 </a></li>
-                <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='delivery'} ? 'active'" th:href="@{/}">
+                <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='delivery'} ? 'active'" th:href="@{/delivery/viewall}">
                     Delivery<span class="sr-only"></span>
                 </a></li>
                 <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='mesin'} ? 'active'" th:href="@{/}">

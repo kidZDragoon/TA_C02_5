@@ -9,5 +9,4 @@ public interface PegawaiService {
     public String encrypt (String password);
     PegawaiModel findByUsername(String username);
     List<PegawaiModel> getListUser();
-
 }
