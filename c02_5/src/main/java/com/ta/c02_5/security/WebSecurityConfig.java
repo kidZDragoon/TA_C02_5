@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
+                .antMatchers("/user/add").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -39,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         auth.inMemoryAuthentication()
                 .passwordEncoder(encoder)
                 .withUser("AdminFactory").password(encoder.encode("Admin123"))
-                .roles("Admin");
+                .roles("ADMIN");
     }
 
 //    @Autowired
