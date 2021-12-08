@@ -37,9 +37,9 @@ public class PegawaiController {
     @PostMapping(value = "/addUser")
     private String addUserSubmit(@ModelAttribute PegawaiModel user, HttpServletRequest request, Model model) {
 
-        Principal principal = request.getUserPrincipal();
-        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
-        pegawai.setCounter(pegawai.getCounter() + 1);
+//        Principal principal = request.getUserPrincipal();
+//        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
+//        pegawai.setCounter(pegawai.getCounter() + 1);
 
         if (pegawaiService.findByUsername(user.getUsername()) != null) {
             model.addAttribute("messages", "Username sudah digunakan");
