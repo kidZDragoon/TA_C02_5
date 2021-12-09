@@ -2,8 +2,10 @@ package com.ta.c02_5.service;
 
 import com.ta.c02_5.rest.ItemDetail;
 import com.ta.c02_5.rest.Setting;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -60,5 +62,66 @@ public class ItemRestServiceImpl implements ItemRestService{
         result.setHarga((Integer) res.get("harga"));
         result.setStok((Integer)res.get("stok"));
         return result;
+    }
+
+//    @Override
+//         public Disposable updateStokItem (ItemDetail item){
+//
+//        System.out.println("UUID UPDATE STOK " + item.getUuid());
+//        System.out.println("NAMA UPDATE STOK " + item.getNama());
+//        System.out.println("STOK UPDATE STOK " + item.getStok());
+//
+//
+//        HashMap<String, Integer> hm = new HashMap<>();
+//       hm.put("stok", item.getStok());
+//       System.out.println(Mono.just(hm).block());
+//
+//       try{
+//           Disposable response = this.webClient.put().uri("/api/item/"+ item.getUuid())
+//                    .contentType(MediaType.APPLICATION_JSON)
+//                    .body(Mono.just(hm), HashMap.class)
+//                    .accept(MediaType.ALL)
+//                    .retrieve()
+//                    .bodyToMono(HashMap.class)
+//                    .subscribe();
+//           String status = response.block().get("status").toString();
+//            return response;
+//
+//        } catch (Exception e){
+//            return null;
+//        }
+//
+//    }
+
+    @Override
+    public Mono<HashMap> updateStokItem (ItemDetail item) {
+
+        System.out.println("UUID UPDATE STOK " + item.getUuid());
+        System.out.println("NAMA UPDATE STOK " + item.getNama());
+        System.out.println("STOK UPDATE STOK " + item.getStok());
+
+
+        HashMap<String, Integer> hm = new HashMap<>();
+        hm.put("stok", item.getStok());
+        System.out.println(Mono.just(hm).block());
+
+        try {
+            Mono<HashMap> response = this.webClient.put().uri("/api/item/"+ item.getUuid())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(Mono.just(hm), HashMap.class)
+                    .accept(MediaType.ALL)
+                    .retrieve()
+                    .bodyToMono(HashMap.class);
+
+            HashMap res = (HashMap) response.block().get("result");
+            ItemDetail result = new ItemDetail();
+            result.setStok((Integer)res.get("stok"));
+
+            return response;
+
+
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
