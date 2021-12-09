@@ -4,7 +4,6 @@ import com.ta.c02_5.model.PegawaiModel;
 import com.ta.c02_5.service.PegawaiService;
 import com.ta.c02_5.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,22 +29,26 @@ public class PegawaiController {
 
     @GetMapping(value = "/addUser")
     private String addUserForm(Model model){
+        model.addAttribute("user", new PegawaiModel());
         model.addAttribute("listRole", roleService.getListRole());
         return "web-add-pegawai";
     }
 
     @PostMapping(value = "/addUser")
-    private String addUserSubmit(@ModelAttribute PegawaiModel user,HttpServletRequest request, Model model) {
-        try {
-            Principal principal = request.getUserPrincipal();
-            PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
-            pegawai.setCounter(pegawai.getCounter() + 1);
-            user.setCounter(0);
-            pegawaiService.addUser(user);
-            model.addAttribute("user", user);
-            return "redirect:/";
-        }catch (DataIntegrityViolationException e){
-            return "gabisa";
+    private String addUserSubmit(@ModelAttribute PegawaiModel user, HttpServletRequest request, Model model) {
+
+        Principal principal = request.getUserPrincipal();
+        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
+        pegawai.setCounter(pegawai.getCounter() + 1);
+
+        if (pegawaiService.findByUsername(user.getUsername()) != null) {
+            model.addAttribute("messages", "Username sudah digunakan");
+            return "messages";
         }
+
+        user.setCounter(0);
+        pegawaiService.addUser(user);
+
+        return "redirect:/";
     }
 }
