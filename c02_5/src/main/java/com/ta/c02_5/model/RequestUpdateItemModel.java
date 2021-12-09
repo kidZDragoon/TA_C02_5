@@ -49,8 +49,7 @@ public class RequestUpdateItemModel implements Serializable {
     @Column(name = "id_cabang", nullable = false)
     private Integer idCabang;
 
-    @NotNull
-    @Column(name = "executed", nullable = false)
+    @Column(name = "executed")
     private boolean executed;
 
     @NotNull

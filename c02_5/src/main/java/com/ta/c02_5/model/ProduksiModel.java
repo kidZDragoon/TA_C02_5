@@ -37,6 +37,10 @@ public class ProduksiModel implements Serializable {
     private Integer idKategori;
 
     @NotNull
+    @Column(name = "id_cabang", nullable = false)
+    private Integer idCabang;
+
+    @NotNull
     @Column(name = "tambahan_stok", nullable = false)
     private Integer tambahanStok;
 
