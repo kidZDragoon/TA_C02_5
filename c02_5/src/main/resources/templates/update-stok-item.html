@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SI FACTORY</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(item)"></nav>
+<div class="container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2 class="judul" style="text-align: center">Update Stok Item</h2>
+        <br>
+        <form th:action="@{/item/update}" th:object="${item}" method="POST">
+          <input type="hidden" name="uuid" th:value="*{uuid}" />
+<!--          <input type="hidden" th:field="*{idKategori}" />-->
+<!--          <input type="hidden" th:field="*{tanggalProduksi}" />-->
+          Tambah Stok : <br>
+          <input required class="form-control" type="number" name="tambahan_stok" />
+          <br>
+
+          Mesin : <br>
+          <select name="idMesin" class="form-control">
+            <option selected value=""> -- Pilih Mesin -- </option>
+            <option th:each="mesin : ${listKategori}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
+          </select>
+          <br><br>
+
+          <button class="btn btn-primary" type="submit">Submit</button>
+          <a class="btn btn-primary" href="/">Home</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
