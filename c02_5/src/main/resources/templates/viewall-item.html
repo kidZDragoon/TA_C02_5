@@ -39,7 +39,7 @@
                                     <a class="btn btn-primary" th:href="@{/item/view/} + ${item.uuid}">Lihat Detail</a>
                                 </td>
                                 <td><!--TODO FITUR #7-->
-                                    <a class="btn btn-primary" sec:authorize="hasAuthority('STAFF_GUDANG')" th:href="@{/item/update/} + ${item.uuid}">Update Item</a>
+                                    <a class="btn btn-primary" sec:authorize="hasAuthority('STAFF_ GUDANG')" th:href="@{/item/update/} + ${item.uuid}">Update Item</a>
                                 </td>
                             </tr>
                             </tbody>

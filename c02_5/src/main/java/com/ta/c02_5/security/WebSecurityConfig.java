@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/user/add").hasAuthority("ADMIN")
-                .antMatchers("/item/update/**").hasAuthority("STAFF_GUDANG")
+                .antMatchers("/item/update/**").hasAuthority("STAFF_ GUDANG")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
