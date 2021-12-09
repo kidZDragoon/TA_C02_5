@@ -33,7 +33,7 @@ public class DeliveryController {
             return "viewall-delivery" ;
         }
         else {
-            model.addAttribute ( "listDelivery",listDelivery);
+            model.addAttribute ( "listDelivery",user.getListDelivery());
             return "viewall-delivery-kurir" ;
         }
     }
