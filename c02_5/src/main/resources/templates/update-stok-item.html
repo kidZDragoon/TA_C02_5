@@ -23,7 +23,7 @@
           <br>
 
           Mesin : <br>
-          <select name="idMesin" class="form-control">
+          <select required name="idMesin" class="form-control">
             <option selected value=""> -- Pilih Mesin -- </option>
             <option th:each="mesin : ${listKategori}" th:value="${mesin.idMesin}" th:text="${mesin.nama}"></option>
           </select>

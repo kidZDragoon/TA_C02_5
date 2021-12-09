@@ -14,11 +14,8 @@ import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 @Controller
 @RequestMapping("/item")
@@ -99,13 +96,15 @@ public class ItemController {
             MesinModel mesin = mesinService.findByIdMesin(idMesin);
             mesin.setKapasitas(mesin.getKapasitas() - 1);
     //        mesin.setIdMesin(idMesin);
+
+            //set id-mesin
             produksi.setMesin(mesin);
 
             itemService.updateItem(produksi);
             itemRestService.updateStokItem(itemUUID);
             return "update-stok";
         }else{
-           return "gabisa";
+           return "gagalUpdate";
         }
     }
 }
