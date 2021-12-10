@@ -9,21 +9,16 @@ import org.springframework.validation.BindingResult;
 @Getter@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RequestUpdateItemDetail {
-    @JsonProperty
-    private int id_kategori;
-
-    @JsonProperty
-    private int tambahan_stok;
-
-    @JsonProperty
-    private String tanggal_request;
-
-    @JsonProperty
-    private int id_cabang;
-
-    @JsonProperty
+    @JsonProperty("idItem")
     private String id_item;
 
-    @JsonProperty
-    private int id_delivery;
+    @JsonProperty("idKategori")
+    private int id_kategori;
+
+    @JsonProperty("tambahanStok")
+    private int tambahan_stok;
+
+    @JsonProperty("idCabang")
+    private int id_cabang;
+
 }

@@ -23,18 +23,12 @@ public class ProduksiRestServiceImpl implements ProduksiRestService {
     private RequestUpdateItemDB requestUpdateItemDB;
 
     @Override
-    public RequestUpdateItemModel createRequestUpdateItem(int id_kategori,
-                                                 int tambahan_stok,
-                                                 String tanggal_request,
-                                                 int id_cabang,
-                                                 String id_item,
-                                                 int id_delivery) {
+    public RequestUpdateItemModel createRequestUpdateItem(String id_item, int id_kategori, int tambahan_stok, int id_cabang) {
         RequestUpdateItemModel rui = new RequestUpdateItemModel();
         rui.setIdKategori(id_kategori);
         rui.setTambahanStok(tambahan_stok);
         rui.setIdCabang(id_cabang);
         rui.setIdItem(id_item);
-        rui.setIdDelivery(id_delivery);
         rui.setExecuted(false);
         Date today = Calendar.getInstance().getTime();
         rui.setTanggalRequest(today);

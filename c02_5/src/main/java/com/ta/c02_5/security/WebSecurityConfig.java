@@ -20,8 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/css/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/requestupdateitem").permitAll()
+                .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

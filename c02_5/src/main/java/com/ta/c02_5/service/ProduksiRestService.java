@@ -8,5 +8,5 @@ import java.util.Date;
 import java.util.List;
 
 public interface ProduksiRestService {
-    RequestUpdateItemModel createRequestUpdateItem(int id_kategori, int tambahan_stok, String tanggal_request, int id_cabang, String id_item, int id_delivery);
+    RequestUpdateItemModel createRequestUpdateItem(String id_item, int id_kategori, int tambahan_stok, int id_cabang);
 }

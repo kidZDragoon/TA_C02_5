@@ -29,12 +29,8 @@ public class ProduksiRestController {
                     HttpStatus.BAD_REQUEST, "Request body has invalid type or missing field"
             );
         } else {
-            return produksiRestService.createRequestUpdateItem(rui.getId_kategori(),
-                    rui.getTambahan_stok(),
-                    rui.getTanggal_request(),
-                    rui.getId_cabang(),
-                    rui.getId_item(),
-                    rui.getId_delivery());
+            System.out.println(rui.getId_item()+" "+ rui.getId_kategori()+ " " +rui.getTambahan_stok()+" " + rui.getId_cabang());
+            return produksiRestService.createRequestUpdateItem(rui.getId_item(), rui.getId_kategori(), rui.getTambahan_stok(), rui.getId_cabang());
         }
     }
     
