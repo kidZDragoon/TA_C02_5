@@ -51,7 +51,7 @@ public class MesinRestServiceImpl implements MesinRestService {
         return mesinModelList;
     }
 
-//    @Override check
+//    @Override check123
 //    public List<TreeMap<String, Object>> getAllMesinHashMap() {
 //        List<MesinModel> mesinModelList = retrieveListMesin();
 //        List<TreeMap<String, Object>> result = new ArrayList<>();
