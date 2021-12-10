@@ -12,10 +12,14 @@ import java.util.List;
 
 @Service
 @Transactional
-
 public class MesinServiceImpl implements MesinService {
     @Autowired
-    private MesinDB mesinDB;
+    MesinDB mesinDB;
+
+    @Override
+    public List<MesinModel> getMesinList() {
+        return mesinDB.findAll();
+    }
 
     @Override
     public List<MesinModel> getListMesin() {
@@ -31,4 +35,5 @@ public class MesinServiceImpl implements MesinService {
     public MesinModel findByIdMesin(Integer idMesin) {
         return mesinDB.findByIdMesin(idMesin);
     }
+
 }

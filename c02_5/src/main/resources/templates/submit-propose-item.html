@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barang</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(item)"></nav>
+
+<div class="container">
+    <div class="m-4">
+        <h1 th:text="'Item berhasil ditambahkan.'"></h1>
+        <br>
+        <a class="btn btn-secondary" href="/item/propose">Kembali</a>
+    </div>
+</div>
+
+</body>
+</html>
