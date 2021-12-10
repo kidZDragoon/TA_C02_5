@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
+
 
 @RestController
 @RequestMapping("/api")
@@ -33,12 +35,29 @@ public class MesinRestController {
             produces = { MimeTypeUtils.APPLICATION_JSON_VALUE },
             headers = "Accept=application/json"
     )
-    public MesinDetail<List<HashMap<String,Object>>> getAllMesinJSON() {
-        MesinDetail<List<HashMap<String,Object>>> response = new MesinDetail<>();
+    public MesinDetail<List<MesinModel>> getAllMesinJSON() {
+        MesinDetail<List<MesinModel>> response = new MesinDetail<>();
+
+    
         response.setMessage("success");
         response.setStatus(200);
         response.setResult(mesinRestService.getAllMesinHashMap());
         return response;
 
     }
+
+
+//    @GetMapping(
+//            value = "/list-mesin",
+//            produces = { MimeTypeUtils.APPLICATION_JSON_VALUE },
+//            headers = "Accept=application/json"
+//    )
+//    public MesinDetail<List<TreeMap<String,Object>>> getAllMesinJSON() {
+//        MesinDetail<List<TreeMap<String,Object>>> response = new MesinDetail<>();
+//        response.setMessage("success");
+//        response.setStatus(200);
+//        response.setResult(mesinRestService.getAllMesinHashMap());
+//        return response;
+//
+//    }
 }
