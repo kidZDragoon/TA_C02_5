@@ -23,6 +23,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/api/**" ).permitAll()
                 .antMatchers("/user/add").hasAuthority("ADMIN")
                 .antMatchers("/item/update/**").hasAuthority("STAFF_GUDANG")
+                .antMatchers("/request-update-item/viewall").hasAnyAuthority("STAFF_GUDANG", "STAFF_OPERASIONAL")
+                .antMatchers("/request-update-item/update/*").hasAnyAuthority("STAFF_GUDANG")
 
                 .anyRequest().authenticated()
                 .and()
