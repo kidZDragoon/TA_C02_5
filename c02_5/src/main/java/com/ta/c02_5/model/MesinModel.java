@@ -34,7 +34,7 @@ public class MesinModel implements Serializable {
 
     @NotNull
     @Column(name = "id_kategori", nullable = false)
-    private Integer idKategori;
+    private String idKategori;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")

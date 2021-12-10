@@ -13,10 +13,10 @@
     <div class="card m-4 p-4">
         <div class="card-body">
             <div class="justify-content-center">
-                <h2 class="judul" style="text-align: center">Daftar Item</h2>
+                <h2 style="text-align: center">Daftar Item</h2>
                 <br>
                 <div th:each="entry, stat: ${listItem}" class="card mx-auto justify-content-center" style="width: 85%; margin-top: 1.5%; text-align: center" >
-                    <h1 class="subjudul" th:text="${entry.key}"></h1>
+                    <h1 class="subjudul" style="background-color: #1F65CF;color:white;" th:text="${entry.key}"></h1>
                     <table class="table">
                             <thead>
                             <tr>
@@ -25,21 +25,19 @@
                                 <th>Harga</th>
                                 <th>Stok</th>
                                 <th>Action</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="item, iterationStatus : ${entry.value}"
-                                th:style="${iterationStatus.even} ? 'font-weight:bold'">
+                                th:style="${iterationStatus.even ? 'background:white;' : 'background:gainsboro;'}">
                                 <td th:text="${iterationStatus.count}"></td>
                                 <td th:text="${item.nama}"></td>
                                 <td th:text="${item.harga}"></td>
                                 <td th:text="${item.stok}"></td>
                                 <td>
                                     <a class="btn btn-primary" th:href="@{/item/view/} + ${item.uuid}">Lihat Detail</a>
-                                </td>
-                                <td><!--TODO FITUR #7-->
-                                    <a class="btn btn-primary" th:href="@{/item/update/} + ${item.uuid}">Update Item</a>
+                                    <!--TODO FITUR #7-->
+                                    <a class="btn btn-secondary" th:href="@{/item/update/} + ${item.uuid}">Update Item</a>
                                 </td>
                             </tr>
                             </tbody>
