@@ -17,8 +17,5 @@ public interface MesinRestService {
     MesinModel createMesin(MesinModel mesin);
     List<MesinModel> retrieveListMesin();
     MesinModel getMesinByIdMesin(Integer idMesin);
-
-//    List<TreeMap<String, Object>> getAllMesinHashMap();
-    List<MesinModel> getAllMesinHashMap();
-
+    List<HashMap<String, Object>> getAllMesinHashMap();
 }
