@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SI FACTORY | Daftar Produksi</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(produksi)"></nav>
+
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <h2 class="judul" style="text-align: center">Daftar Produksi</h2>
+                <br>
+                <div class="card mx-auto justify-content-center" style="width: 85%; margin-top: 1.5%; text-align: center" >
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Mesin</th>
+                            <th>Pegawai</th>
+                            <th>Tanggal Produksi</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="produksi, iterationStatus : ${listProduksi}">
+                            <td th:text="${iterationStatus.count}"></td>
+                            <td th:text="${produksi.mesin.nama}"></td>
+                            <td th:text="${produksi.pegawai}"></td>
+                            <td th:text="${produksi.tanggalProduksi}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br><br>
+                <a class="btn btn-primary" href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

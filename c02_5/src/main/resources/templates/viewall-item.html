@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>SI FACTORY</title>
@@ -37,7 +37,7 @@
                                 <td>
                                     <a class="btn btn-primary" th:href="@{/item/view/} + ${item.uuid}">Lihat Detail</a>
                                     <!--TODO FITUR #7-->
-                                    <a class="btn btn-secondary" th:href="@{/item/update/} + ${item.uuid}">Update Item</a>
+                                    <a class="btn btn-primary" sec:authorize="hasAuthority('STAFF_GUDANG')" th:href="@{/item/update/} + ${item.uuid}">Update Item</a>
                                 </td>
                             </tr>
                             </tbody>

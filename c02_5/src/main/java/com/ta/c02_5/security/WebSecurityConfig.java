@@ -21,6 +21,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/api/**" ).permitAll()
+                .antMatchers("/user/add").hasAuthority("ADMIN")
+                .antMatchers("/item/update/**").hasAuthority("STAFF_GUDANG")
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -40,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder)
 //                .withUser("AdminFactory").password(encoder.encode("Admin123"))
-//                .roles("Admin");
+//                .roles("ADMIN");
 //    }
 
     @Autowired
