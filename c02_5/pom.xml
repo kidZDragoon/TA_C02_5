@@ -75,6 +75,11 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.projectreactor</groupId>
+			<artifactId>reactor-spring</artifactId>
+			<version>1.0.1.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>
