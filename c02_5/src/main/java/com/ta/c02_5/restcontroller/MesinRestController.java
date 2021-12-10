@@ -34,8 +34,8 @@ public class MesinRestController {
             produces = { MimeTypeUtils.APPLICATION_JSON_VALUE },
             headers = "Accept=application/json"
     )
-    public MesinDetail<List<MesinModel>> getAllMesinJSON() {
-        MesinDetail<List<MesinModel>> response = new MesinDetail<>();
+    public MesinDetail<List<HashMap<String, Object>>> getAllMesinJSON() {
+        MesinDetail<List<HashMap<String, Object>>> response = new MesinDetail<>();
         response.setMessage("success");
         response.setStatus(200);
         response.setResult(mesinRestService.getAllMesinHashMap());
