@@ -34,21 +34,21 @@ public class PegawaiController {
         return "web-add-pegawai";
     }
 
-//    @PostMapping(value = "/addUser")
-//    private String addUserSubmit(@ModelAttribute PegawaiModel user, HttpServletRequest request, Model model) {
-//
-//        Principal principal = request.getUserPrincipal();
-//        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
-//        pegawai.setCounter(pegawai.getCounter() + 1);
-//
-//        if (pegawaiService.findByUsername(user.getUsername()) != null) {
-//            model.addAttribute("messages", "Username sudah digunakan");
-//            return "messages";
-//        }
-//
-//        user.setCounter(0);
-//        pegawaiService.addUser(user);
-//
-//        return "redirect:/";
-//    }
+    @PostMapping(value = "/addUser")
+    private String addUserSubmit(@ModelAttribute PegawaiModel user, HttpServletRequest request, Model model) {
+
+        Principal principal = request.getUserPrincipal();
+        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
+        pegawai.setCounter(pegawai.getCounter() + 1);
+
+        if (pegawaiService.findByUsername(user.getUsername()) != null) {
+            model.addAttribute("messages", "Username sudah digunakan");
+            return "messages";
+        }
+
+        user.setCounter(0);
+        pegawaiService.addUser(user);
+
+        return "redirect:/";
+    }
 }
