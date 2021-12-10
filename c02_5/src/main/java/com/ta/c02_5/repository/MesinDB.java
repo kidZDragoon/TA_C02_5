@@ -10,5 +10,4 @@ import java.util.Optional;
 public interface MesinDB extends JpaRepository<MesinModel, Integer> {
     Optional<MesinModel> findByIdMesin(Integer idMesin);
     List<MesinModel> findByIdKategori (Integer idKategori);
-
 }

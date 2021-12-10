@@ -48,6 +48,9 @@ public class ItemController {
     @Autowired
     private PegawaiService pegawaiService;
 
+    @Autowired
+    private ProduksiService produksiService;
+
 
     @GetMapping("/viewall")
     public String getListItem(Model model){
@@ -59,7 +62,9 @@ public class ItemController {
 
     @GetMapping("/view/{uuid}")
     public String getItemByUUID(Model model, @PathVariable String uuid){
+        model.addAttribute("produksiList", produksiService.getListProduksiByIdItem(uuid));
         model.addAttribute("item", itemRestService.getItemByUUID(uuid));
+
         return "view-byUUID";
     }
 

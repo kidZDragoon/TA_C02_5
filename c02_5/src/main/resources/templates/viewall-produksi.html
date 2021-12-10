@@ -30,7 +30,7 @@
                         <tr th:each="produksi, iterationStatus : ${listProduksi}">
                             <td th:text="${iterationStatus.count}"></td>
                             <td th:text="${produksi.mesin.nama}"></td>
-                            <td th:text="${produksi.pegawai}"></td>
+                            <td th:text="${produksi.pegawai.nama}"></td>
                             <td th:text="${produksi.tanggalProduksi}"></td>
                         </tr>
                         </tbody>
