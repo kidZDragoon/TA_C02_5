@@ -1,6 +1,7 @@
 package com.ta.c02_5.restcontroller;
 
 import com.ta.c02_5.model.MesinModel;
+import com.ta.c02_5.rest.MesinDetail;
 import com.ta.c02_5.service.MesinRestService;
 
 import net.minidev.json.JSONObject;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -26,17 +28,17 @@ public class MesinRestController {
     @Autowired
     private MesinRestService mesinRestService;
 
-    @RequestMapping(
+    @GetMapping(
             value = "/list-mesin",
-            method = RequestMethod.GET,
             produces = { MimeTypeUtils.APPLICATION_JSON_VALUE },
             headers = "Accept=application/json"
     )
-    public ResponseEntity<Iterable<MesinModel>> getAllMesinJSON() {
-        try {
-            return new ResponseEntity<>(mesinRestService.retrieveListMesin(), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    public MesinDetail<List<HashMap<String,Object>>> getAllMesinJSON() {
+        MesinDetail<List<HashMap<String,Object>>> response = new MesinDetail<>();
+        response.setMessage("success");
+        response.setStatus(200);
+        response.setResult(mesinRestService.getAllMesinHashMap());
+        return response;
+
     }
 }
