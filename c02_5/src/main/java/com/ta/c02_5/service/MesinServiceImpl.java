@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -33,7 +34,9 @@ public class MesinServiceImpl implements MesinService {
 
     @Override
     public MesinModel findByIdMesin(Integer idMesin) {
-        return mesinDB.findByIdMesin(idMesin);
+        Optional<MesinModel> mesinModelOptional = mesinDB.findByIdMesin(idMesin);
+        MesinModel mesin = mesinModelOptional.get();
+        return mesin;
     }
 
 }

@@ -20,16 +20,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.Date;
 import java.util.HashMap;
 
 
@@ -84,6 +81,7 @@ public class ItemController {
     ) {
         model.addAttribute("item", item);
         return "submit-propose-item";
+    }
 
     @GetMapping("/update/{uuid}")
     public String updateItemForm(
@@ -103,7 +101,7 @@ public class ItemController {
     @PostMapping("/update")
     public String updateStokItemSubmit(
             @ModelAttribute ProduksiModel produksi,
-            Integer tambahan_stok, String uuid, HttpServletRequest request,Integer idMesin,
+            Integer tambahan_stok, String uuid, HttpServletRequest request, Integer idMesin,
             Model model
     ) {
         ItemDetail itemUUID = itemRestService.getItemByUUID(uuid);
