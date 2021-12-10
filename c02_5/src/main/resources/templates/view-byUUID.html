@@ -24,6 +24,31 @@
             </div>
         </div>
     </div>
+    <h2 class="judul" style="text-align: center">List Produksi</h2>
+    <br>
+    <div class="card mx-auto justify-content-center" style="width: 85%; margin-top: 1.5%; text-align: center" >
+        <table class="table">
+            <thead>
+            <tr>
+                <th>No.</th>
+                <th>Id Produksi</th>
+                <th>Nama Mesin</th>
+                <th>Tambahan Stok</th>
+                <th>Tanggal Produksi</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="produksi, iterationStatus : ${produksiList}">
+                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${produksi.idProduksi}"></td>
+                <td th:text="${produksi.mesin.nama}"></td>
+                <td th:text="${produksi.tambahanStok}"></td>
+                <td th:text="${produksi.tanggalProduksi}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>

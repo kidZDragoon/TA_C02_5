@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
+
 @RestController
 @RequestMapping("/api")
 public class MesinRestController {
@@ -36,12 +37,15 @@ public class MesinRestController {
     )
     public MesinDetail<List<MesinModel>> getAllMesinJSON() {
         MesinDetail<List<MesinModel>> response = new MesinDetail<>();
+
+    
         response.setMessage("success");
         response.setStatus(200);
         response.setResult(mesinRestService.getAllMesinHashMap());
         return response;
 
     }
+
 
 //    @GetMapping(
 //            value = "/list-mesin",
