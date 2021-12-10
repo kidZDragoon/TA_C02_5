@@ -46,19 +46,25 @@ public class MesinRestServiceImpl implements MesinRestService {
     }
 
     @Override
-    public List<HashMap<String, Object>> getAllMesinHashMap() {
+    public List<MesinModel> getAllMesinHashMap() {
         List<MesinModel> mesinModelList = retrieveListMesin();
-        List<HashMap<String, Object>> result = new ArrayList<>();
-
-        for(MesinModel mesin : mesinModelList) {
-            HashMap<String, Object> mesinHP = new HashMap<>();
-            mesinHP.put("idMesin", mesin.getIdMesin());
-            mesinHP.put("nama", mesin.getNama());
-            mesinHP.put("idKategori", mesin.getIdKategori());
-            mesinHP.put("tanggalDibuat", mesin.getTanggalDibuat());
-            mesinHP.put("kapasitas", mesin.getKapasitas());
-            result.add(mesinHP);
-        }
-        return result;
+        return mesinModelList;
     }
+
+//    @Override
+//    public List<TreeMap<String, Object>> getAllMesinHashMap() {
+//        List<MesinModel> mesinModelList = retrieveListMesin();
+//        List<TreeMap<String, Object>> result = new ArrayList<>();
+//
+//        for(MesinModel mesin : mesinModelList) {
+//            TreeMap<String, Object> mesinHP = new TreeMap<>();
+//            mesinHP.put("idMesin", mesin.getIdMesin());
+//            mesinHP.put("nama", mesin.getNama());
+//            mesinHP.put("idKategori", mesin.getIdKategori());
+//            mesinHP.put("tanggalDibuat", mesin.getTanggalDibuat());
+//            mesinHP.put("kapasitas", mesin.getKapasitas());
+//            result.add(mesinHP);
+//        }
+//        return result;
+//    }
 }

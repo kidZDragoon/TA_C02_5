@@ -48,4 +48,17 @@ public class MesinModel implements Serializable {
     //Relasi dengan ProduksiModel
     @OneToMany(mappedBy = "mesin", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProduksiModel> listProduksi;
+
+//    public String toString() {
+//        return(
+//                '{' + '\n' +
+//                        "\"idMesin\": " + this.idMesin + ',' + '\n' +
+//                        "\"nama\": " + this.nama + ',' + '\n' +
+//                        "\"idKategori\": " + this.idKategori + ',' + '\n' +
+//                        "\"tanggalDibuat\": " + this.tanggalDibuat + ',' + '\n' +
+////                        "\"kapasitas\": " + this.kapasitas + ',' + '\n' +
+//                        '\n' +
+//                '}'
+//                );
+//    }
 }
