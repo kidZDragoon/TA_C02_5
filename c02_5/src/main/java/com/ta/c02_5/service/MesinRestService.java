@@ -9,10 +9,12 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface MesinRestService {
     MesinModel createMesin(MesinModel mesin);
     List<MesinModel> retrieveListMesin();
     MesinModel getMesinByIdMesin(Integer idMesin);
+    List<HashMap<String, Object>> getAllMesinHashMap();
 }
