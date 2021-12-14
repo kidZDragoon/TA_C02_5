@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>SI FACTORY</title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar(pegawai)"></nav>
+
+<div class="container">
+  <div class="card m-4 p-4">
+    <div class="card-body">
+      <div class="justify-content-center">
+        <h2 style="text-align: center">Daftar Seluruh Pegawai</h2>
+        <br>
+        <div class="col">
+          <div th:if="*{listPegawai.size() != 0}">
+            <table class="table">
+              <thead>
+              <tr>
+                <th style="text-align: center">Nama</th>
+                <th style="text-align: center">Role</th>
+                <th style="text-align: center">Gaji</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="pgw, iterationStatus : ${listPegawai}"
+                  th:style="${iterationStatus.even} ? 'font-weight:bold;'">
+                <td th:text="${pgw.nama}"></td>
+                <td th:text="${pgw.getRole().namaRole}"></td>
+                <td th:text="${listGaji[__${iterationStatus.index}__]}"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <br>
+          <a class="btn btn-primary" href="/">Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
