@@ -40,4 +40,10 @@ public class PegawaiServiceImpl implements PegawaiService{
     public List<PegawaiModel> getListUser() {
         return pegawaiDB.findAll();
     }
+
+    @Override
+    public Integer getGajiPegawai(PegawaiModel x) {
+        Integer gaji = (x.getCounter() * x.getRole().getBaseWages());
+        return gaji;
+    }
 }
