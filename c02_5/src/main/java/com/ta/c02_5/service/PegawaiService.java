@@ -10,4 +10,5 @@ public interface PegawaiService {
     PegawaiModel findByUsername(String username);
     List<PegawaiModel> getListUser();
     Integer getGajiPegawai(PegawaiModel x);
+    void updatePegawai(PegawaiModel pegawai);
 }
