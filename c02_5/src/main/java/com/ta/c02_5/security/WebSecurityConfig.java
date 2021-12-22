@@ -46,6 +46,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //                .passwordEncoder(encoder)
 //                .withUser("AdminFactory").password(encoder.encode("Admin123"))
 //                .roles("ADMIN");
+//
+//        BCryptPasswordEncoder encoder2 = new BCryptPasswordEncoder();
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder2)
+//                .withUser("FactoryManager").password(encoder.encode("Manager123"))
+//                .roles("FACTORY_MANAGER");
 //    }
 
     @Autowired
