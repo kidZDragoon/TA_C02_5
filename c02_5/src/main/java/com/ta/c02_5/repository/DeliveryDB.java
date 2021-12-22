@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface DeliveryDB extends JpaRepository<DeliveryModel, Long> {
     List<DeliveryModel> findByOrderByPegawaiAsc();
-    Optional<DeliveryModel> findByIdDelivery(Long idDelivery);
+    Optional<DeliveryModel> findByIdDelivery(Integer idDelivery);
     Optional<DeliveryModel> findByPegawai(Long pegawai);
 }
