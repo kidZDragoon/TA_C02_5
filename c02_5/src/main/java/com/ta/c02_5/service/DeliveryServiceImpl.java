@@ -25,7 +25,7 @@ public class DeliveryServiceImpl implements DeliveryService {
     }
 
     @Override
-    public DeliveryModel getDeliveryByIdDelivery(Long idDelivery) {
+    public DeliveryModel getDeliveryByIdDelivery(Integer idDelivery) {
         Optional<DeliveryModel> delivery = deliveryDB.findByIdDelivery(idDelivery);
         if (delivery.isPresent()) {
             return delivery.get();
@@ -40,5 +40,10 @@ public class DeliveryServiceImpl implements DeliveryService {
             return pegawaiDelivery.get();
         }
         return null;
+    }
+
+    @Override
+    public DeliveryModel addDelivery(DeliveryModel deliveryModel) {
+        return deliveryDB.save(deliveryModel);
     }
 }

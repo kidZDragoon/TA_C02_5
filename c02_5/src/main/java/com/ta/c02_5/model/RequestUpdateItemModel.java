@@ -27,8 +27,6 @@ public class RequestUpdateItemModel implements Serializable {
     private Integer idRequestUpdateItem;
 
     @NotNull
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "id_item", nullable = false)
     private String idItem;
 
@@ -49,12 +47,10 @@ public class RequestUpdateItemModel implements Serializable {
     @Column(name = "id_cabang", nullable = false)
     private Integer idCabang;
 
-    @NotNull
-    @Column(name = "executed", nullable = false)
+    @Column(name = "executed")
     private boolean executed;
 
-    @NotNull
-    @Column(name = "id_delivery", nullable = false)
+    @Column(name = "id_delivery")
     private Integer idDelivery;
 
     // Relasi dengan ProduksiModel
