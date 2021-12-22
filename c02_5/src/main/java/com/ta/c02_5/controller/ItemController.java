@@ -72,8 +72,6 @@ public class ItemController {
     @GetMapping("/propose")
     public String proposeItemForm(Model model) {
         HashMap<String, List<ItemDetail>> allItemHashMap = itemRestService.getListItem();
-//        System.out.println(allItemHashMap.keySet());
-//        System.out.println(allItemHashMap.get("MAKANAN & MINUMAN").get(0).getKategori());
         model.addAttribute("item", new ItemModel());
         model.addAttribute("listItem", allItemHashMap.keySet());
         return "form-propose-item";

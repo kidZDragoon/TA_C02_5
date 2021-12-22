@@ -1,5 +1,6 @@
 package com.ta.c02_5.service;
 
+import com.ta.c02_5.model.ItemModel;
 import com.ta.c02_5.rest.ItemDetail;
 import com.ta.c02_5.rest.Setting;
 import org.springframework.http.MediaType;
@@ -123,5 +124,20 @@ public class ItemRestServiceImpl implements ItemRestService{
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem) {
+        List<HashMap<String, Object>> result = new ArrayList<>();
+        HashMap<String, Object> proposedItemHP = new HashMap<>();
+
+        proposedItemHP.put("nama", proposedItem.getNama());
+        proposedItemHP.put("harga", proposedItem.getHarga());
+        proposedItemHP.put("stok", proposedItem.getStok());
+        proposedItemHP.put("kategori", proposedItem.getKategori());
+
+        result.add(proposedItemHP);
+
+        return result;
     }
 }
