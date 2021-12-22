@@ -46,4 +46,9 @@ public class PegawaiServiceImpl implements PegawaiService{
         Integer gaji = (x.getCounter() * x.getRole().getBaseWages());
         return gaji;
     }
+
+    @Override
+    public void updatePegawai(PegawaiModel pegawai) {
+        pegawaiDB.save(pegawai);
+    }
 }

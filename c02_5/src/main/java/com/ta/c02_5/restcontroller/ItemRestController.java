@@ -56,6 +56,7 @@ public class ItemRestController {
         Principal principal = request.getUserPrincipal();
         PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
         pegawai.setCounter(pegawai.getCounter() + 1);
+        pegawaiService.updatePegawai(pegawai);
 
         return response;
     }
