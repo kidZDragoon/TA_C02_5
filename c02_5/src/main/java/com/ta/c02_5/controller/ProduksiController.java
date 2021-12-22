@@ -17,8 +17,14 @@ public class ProduksiController {
 
     @GetMapping("/produksi/viewall")
     public String listProduksi(Model model) {
+
         List<ProduksiModel> listProduksi = produksiService.getProduksiList();
+        for(ProduksiModel p : listProduksi){
+            System.out.println("nama mesin " + p.getMesin().getNama());
+        }
+
         model.addAttribute ( "listProduksi",listProduksi);
+        System.out.println("test 123 " + listProduksi);
         return "viewall-produksi" ;
     }
 }

@@ -17,8 +17,8 @@ import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter @Getter
 @Entity
+@Setter @Getter
 @Table(name = "requestupdateitem")
 public class RequestUpdateItemModel implements Serializable {
     @Id

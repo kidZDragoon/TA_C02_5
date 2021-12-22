@@ -23,6 +23,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.POST,"/api/requestupdateitem").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
+                .antMatchers("/api/**" ).permitAll()
+                .antMatchers("/user/add").hasAuthority("ADMIN")
+                .antMatchers("/item/update/**").hasAuthority("STAFF_GUDANG")
+                .antMatchers("/request-update-item/viewall").hasAnyAuthority("STAFF_GUDANG", "STAFF_OPERASIONAL")
+                .antMatchers("/request-update-item/update/*").hasAnyAuthority("STAFF_GUDANG")
+                .antMatchers("/user/viewall/**").hasAnyAuthority("ADMIN", "FACTORY_MANAGER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -48,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //        auth.inMemoryAuthentication()
 //                .passwordEncoder(encoder)
 //                .withUser("AdminFactory").password(encoder.encode("Admin123"))
-//                .roles("Admin");
+//                .roles("ADMIN");
 //    }
 
     @Autowired

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Propose Item</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(item)"></nav>
+
+<div class="container">
+    <br>
+    <h2 class="text-center">Form Propose Item</h2>
+    <div class="card m-4 p-4 bg-light mx-auto" style="width: 40rem;">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <form th:action="@{/item/propose}" th:object="${item}" method="POST">
+                    Nama<br>
+                    <input required class="form-control" type="text" name="nama" />
+                    <br>
+
+                    Harga<br>
+                    <input required min="0" class="form-control" type="number" name="harga" />
+                    <br>
+
+                    Stok <br>
+                    <input required min="0" class="form-control" type="number" name="stok" />
+                    <br>
+
+                    Kategori <br>
+                    <select name="kategori" required class="form-select custom-select">
+                        <option>-- PILIH KATEGORI --</option>
+                        <option th:each="item : ${listItem}" th:text="${item}"></option>
+                    </select>
+                    <br><br>
+
+                    <button class="btn btn-primary float-right" style="margin-left: 20px;" type="submit">Simpan</button>
+                    <a class="btn btn-secondary float-right" href="/">Batal</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
