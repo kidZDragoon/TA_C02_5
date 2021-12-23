@@ -149,6 +149,8 @@ public class RequestUpdateItemController {
 
         deliveryService.addDelivery(delivery);
 
+        requestUpdateItem.setIdDelivery(delivery.getIdDelivery());
+
         Principal principal = request.getUserPrincipal();
         PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
         pegawai.setCounter(pegawai.getCounter() + 1);
