@@ -1,6 +1,7 @@
 package com.ta.c02_5.service;
 
 import com.ta.c02_5.model.PegawaiModel;
+import com.ta.c02_5.model.RoleModel;
 import com.ta.c02_5.repository.PegawaiDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,6 +38,11 @@ public class PegawaiServiceImpl implements PegawaiService{
     }
 
     @Override
+    public List<PegawaiModel> getListUserByRole(RoleModel role) {
+        return pegawaiDB.findAllByRole(role);
+    }
+
+    @Override
     public List<PegawaiModel> getListUser() {
         return pegawaiDB.findAll();
     }
@@ -45,5 +51,10 @@ public class PegawaiServiceImpl implements PegawaiService{
     public Integer getGajiPegawai(PegawaiModel x) {
         Integer gaji = (x.getCounter() * x.getRole().getBaseWages());
         return gaji;
+    }
+
+    @Override
+    public void updatePegawai(PegawaiModel pegawai) {
+        pegawaiDB.save(pegawai);
     }
 }

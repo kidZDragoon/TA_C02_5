@@ -25,9 +25,7 @@
                             <th>ID Kategori</th>
                             <th>Tambahan Stok</th>
                             <th>Tanggal Request</th>
-<!--                            <th>ID Cabang</th>-->
                             <th>Status Eksekusi</th>
-<!--                            <th>ID Delivery</th>-->
                         </tr>
                         </thead>
                         <tbody>
@@ -37,11 +35,12 @@
                             <td th:text="${requestUpdateItem.idKategori}"></td>
                             <td th:text="${requestUpdateItem.tambahanStok}"></td>
                             <td th:text="${requestUpdateItem.tanggalRequest}"></td>
-<!--                            <td th:text="${requestUpdateItem.idCabang}"></td>-->
                             <td th:text="${requestUpdateItem.executed}"></td>
-<!--                            <td th:text="${requestUpdateItem.idDelivery}"></td>-->
                             <td>
-                                <a sec:authorize="hasAuthority('STAFF_GUDANG')" th:if="${requestUpdateItem.executed == false}" class="btn btn-primary" th:href="@{/request-update-item/update/} + ${requestUpdateItem.idRequestUpdateItem}">Update</a>
+                                <a sec:authorize="hasAuthority('STAFF_GUDANG')" th:if="${requestUpdateItem.executed == false}"
+                                   class="btn btn-primary" th:href="@{/request-update-item/update/} + ${requestUpdateItem.idRequestUpdateItem}">Update</a>
+                                <a sec:authorize="hasAuthority('STAFF_OPERASIONAL')" th:if="${requestUpdateItem.executed == true}"
+                                   class="btn btn-primary" th:href="@{/request-update-item/assign-kurir/} + ${requestUpdateItem.idRequestUpdateItem}">Buat Delivery</a>
                             </td>
                         </tr>
                         </tbody>

@@ -48,7 +48,7 @@
                 <li class="nav-item dropdown"><a type="submit" class="nav-link font-weight-bold" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Item</a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-item"><a type="submit" class="nav-link text-dark" th:href="@{/item/viewall}">Daftar Item</a></li>
-                        <li class="dropdown-item"><a type="submit" class="nav-link text-dark" th:href="@{/item/propose}">Propose Item</a></li>
+                        <li sec:authorize="hasAnyAuthority('FACTORY_MANAGER')" class="dropdown-item"><a type="submit" class="nav-link text-dark" th:href="@{/item/propose}">Propose Item</a></li>
                     </ul>
 
                 <li class="nav-item" sec:authorize="hasAnyAuthority('STAFF_GUDANG', 'STAFF_OPERASIONAL')"><a class="nav-link font-weight-bold" th:classappend="${params=='request-update-item'} ? 'active'" th:href="@{/request-update-item/viewall}">
