@@ -1,5 +1,6 @@
 package com.ta.c02_5.service;
 
+import com.ta.c02_5.model.ItemModel;
 import com.ta.c02_5.rest.ItemDetail;
 import com.ta.c02_5.rest.Setting;
 import org.springframework.http.MediaType;
@@ -64,46 +65,10 @@ public class ItemRestServiceImpl implements ItemRestService{
         return result;
     }
 
-//    @Override
-//         public Disposable updateStokItem (ItemDetail item){
-//
-//        System.out.println("UUID UPDATE STOK " + item.getUuid());
-//        System.out.println("NAMA UPDATE STOK " + item.getNama());
-//        System.out.println("STOK UPDATE STOK " + item.getStok());
-//
-//
-//        HashMap<String, Integer> hm = new HashMap<>();
-//       hm.put("stok", item.getStok());
-//       System.out.println(Mono.just(hm).block());
-//
-//       try{
-//           Disposable response = this.webClient.put().uri("/api/item/"+ item.getUuid())
-//                    .contentType(MediaType.APPLICATION_JSON)
-//                    .body(Mono.just(hm), HashMap.class)
-//                    .accept(MediaType.ALL)
-//                    .retrieve()
-//                    .bodyToMono(HashMap.class)
-//                    .subscribe();
-//           String status = response.block().get("status").toString();
-//            return response;
-//
-//        } catch (Exception e){
-//            return null;
-//        }
-//
-//    }
-
     @Override
     public Mono<HashMap> updateStokItem (ItemDetail item) {
-
-        System.out.println("UUID UPDATE STOK " + item.getUuid());
-        System.out.println("NAMA UPDATE STOK " + item.getNama());
-        System.out.println("STOK UPDATE STOK " + item.getStok());
-
-
         HashMap<String, Integer> hm = new HashMap<>();
         hm.put("stok", item.getStok());
-        System.out.println(Mono.just(hm).block());
 
         try {
             Mono<HashMap> response = this.webClient.put().uri("/api/item/"+ item.getUuid())
@@ -119,9 +84,23 @@ public class ItemRestServiceImpl implements ItemRestService{
 
             return response;
 
-
         } catch (Exception e) {
             return null;
         }
+    }
+
+    @Override
+    public List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem) {
+        List<HashMap<String, Object>> result = new ArrayList<>();
+        HashMap<String, Object> proposedItemHP = new HashMap<>();
+
+        proposedItemHP.put("nama", proposedItem.getNama());
+        proposedItemHP.put("harga", proposedItem.getHarga());
+        proposedItemHP.put("stok", proposedItem.getStok());
+        proposedItemHP.put("kategori", proposedItem.getKategori());
+
+        result.add(proposedItemHP);
+
+        return result;
     }
 }

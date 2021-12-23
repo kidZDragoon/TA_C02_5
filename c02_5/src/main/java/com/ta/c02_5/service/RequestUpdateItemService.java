@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface RequestUpdateItemService {
     List<RequestUpdateItemModel> getRequestUpdateItemList();
+    RequestUpdateItemModel getRequestUpdateItemByIdRequestUpdateItem(Integer idRequestUpdateItem);
+    RequestUpdateItemModel updateRequestItemModel(RequestUpdateItemModel requestUpdateItemModel);
 }

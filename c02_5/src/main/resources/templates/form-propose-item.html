@@ -16,7 +16,7 @@
     <div class="card m-4 p-4 bg-light mx-auto" style="width: 40rem;">
         <div class="card-body">
             <div class="justify-content-center">
-                <form th:action="@{/item/propose}" th:object="${item}" method="POST">
+                <form th:action="@{/api/item/propose}" th:object="${item}" method="POST">
                     Nama<br>
                     <input required class="form-control" type="text" name="nama" />
                     <br>
@@ -31,7 +31,7 @@
 
                     Kategori <br>
                     <select name="kategori" required class="form-select custom-select">
-                        <option>-- PILIH KATEGORI --</option>
+                        <option>-- Pilih Kategori --</option>
                         <option th:each="item : ${listItem}" th:text="${item}"></option>
                     </select>
                     <br><br>

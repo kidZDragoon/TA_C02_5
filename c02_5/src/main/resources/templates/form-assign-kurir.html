@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Kurir</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar(item)"></nav>
+
+<div class="container">
+    <br>
+    <h2 class="text-center">Form Assign Kurir</h2>
+    <div class="card m-4 p-4 bg-light mx-auto" style="width: 40rem;">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <form th:action="@{/request-update-item/assign-kurir}" th:object="${delivery}" method="POST">
+                    <input type="hidden" name="idRequestUpdateItem" th:value="${requestUpdateItem.idRequestUpdateItem}" />
+                    Daftar Kurir <br>
+                    <select name="usernameKurir" required class="form-select custom-select">
+                        <option>-- Pilih Kurir --</option>
+                        <option th:each="kurir : ${listKurir}" th:value="${kurir.username}" th:text="${kurir.nama}"></option>
+                    </select>
+                    <br><br>
+
+                    <button class="btn btn-primary float-right" style="margin-left: 20px;" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
