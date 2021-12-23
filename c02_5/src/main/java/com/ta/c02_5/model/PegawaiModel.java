@@ -27,7 +27,7 @@ public class PegawaiModel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pegawai", nullable = false)
-    private Long idPegawai;
+    private Integer idPegawai;
 
     @NotNull
     @Size(max = 50)

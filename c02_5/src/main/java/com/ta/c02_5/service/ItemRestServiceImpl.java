@@ -65,46 +65,10 @@ public class ItemRestServiceImpl implements ItemRestService{
         return result;
     }
 
-//    @Override
-//         public Disposable updateStokItem (ItemDetail item){
-//
-//        System.out.println("UUID UPDATE STOK " + item.getUuid());
-//        System.out.println("NAMA UPDATE STOK " + item.getNama());
-//        System.out.println("STOK UPDATE STOK " + item.getStok());
-//
-//
-//        HashMap<String, Integer> hm = new HashMap<>();
-//       hm.put("stok", item.getStok());
-//       System.out.println(Mono.just(hm).block());
-//
-//       try{
-//           Disposable response = this.webClient.put().uri("/api/item/"+ item.getUuid())
-//                    .contentType(MediaType.APPLICATION_JSON)
-//                    .body(Mono.just(hm), HashMap.class)
-//                    .accept(MediaType.ALL)
-//                    .retrieve()
-//                    .bodyToMono(HashMap.class)
-//                    .subscribe();
-//           String status = response.block().get("status").toString();
-//            return response;
-//
-//        } catch (Exception e){
-//            return null;
-//        }
-//
-//    }
-
     @Override
     public Mono<HashMap> updateStokItem (ItemDetail item) {
-
-        System.out.println("UUID UPDATE STOK " + item.getUuid());
-        System.out.println("NAMA UPDATE STOK " + item.getNama());
-        System.out.println("STOK UPDATE STOK " + item.getStok());
-
-
         HashMap<String, Integer> hm = new HashMap<>();
         hm.put("stok", item.getStok());
-        System.out.println(Mono.just(hm).block());
 
         try {
             Mono<HashMap> response = this.webClient.put().uri("/api/item/"+ item.getUuid())
@@ -119,7 +83,6 @@ public class ItemRestServiceImpl implements ItemRestService{
             result.setStok((Integer)res.get("stok"));
 
             return response;
-
 
         } catch (Exception e) {
             return null;
