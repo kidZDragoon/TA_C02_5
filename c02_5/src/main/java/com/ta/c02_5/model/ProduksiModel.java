@@ -9,6 +9,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import reactor.util.annotation.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -36,8 +38,8 @@ public class ProduksiModel implements Serializable {
     @Column(name = "id_kategori", nullable = false)
     private Integer idKategori;
 
-    @NotNull
-    @Column(name = "id_cabang", nullable = false)
+
+    @Column(name = "id_cabang")
     private Integer idCabang;
 
     @NotNull
