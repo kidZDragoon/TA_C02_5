@@ -23,11 +23,6 @@ public class MesinServiceImpl implements MesinService {
     }
 
     @Override
-    public List<MesinModel> getListMesin() {
-        return mesinDB.findAll();
-    }
-
-    @Override
     public List<MesinModel> getListMesinByIdKategori(Integer idKategori) {
         return mesinDB.findByIdKategori(idKategori);
     }
@@ -37,6 +32,11 @@ public class MesinServiceImpl implements MesinService {
         Optional<MesinModel> mesinModelOptional = mesinDB.findByIdMesin(idMesin);
         MesinModel mesin = mesinModelOptional.get();
         return mesin;
+    }
+
+    @Override
+    public void updateMesin(MesinModel mesin) {
+        mesinDB.save(mesin);
     }
 
 }
