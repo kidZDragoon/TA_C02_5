@@ -122,6 +122,7 @@ public class ItemController {
             produksi.setIdKategori(idkategori);
             produksi.setTambahanStok(tambahan_stok);
 
+            produksi.setIdCabang(null);
             //Menambah Stok
             itemUUID.setStok(itemUUID.getStok() + tambahan_stok);
 
