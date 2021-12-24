@@ -21,4 +21,9 @@ public interface ItemRestService {
 
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
+<<<<<<< HEAD
+=======
+    List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
+
+>>>>>>> parent of 02fed9f (Feat/auth (#40))
 }
