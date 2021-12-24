@@ -84,7 +84,7 @@ public class ItemController {
             Model model
     ) {
         model.addAttribute("item", item);
-        System.out.println(itemRestService.postItem(item));
+        itemRestService.postItem(item);
 
         //menambahkan counter pada pegawai
         Principal principal = request.getUserPrincipal();
