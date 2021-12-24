@@ -23,6 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers(HttpMethod.POST,"/api/requestupdateitem").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
+                .antMatchers("/img/**").permitAll()
                 .antMatchers("/api/**" ).permitAll()
                 .antMatchers("/user/add").hasAuthority("ADMIN")
                 .antMatchers("/item/update/**").hasAuthority("STAFF_GUDANG")
