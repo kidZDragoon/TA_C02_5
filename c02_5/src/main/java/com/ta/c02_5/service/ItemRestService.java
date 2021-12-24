@@ -13,4 +13,6 @@ public interface ItemRestService {
     Mono<HashMap> updateStokItem (ItemDetail item);
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
+    List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
+
 }

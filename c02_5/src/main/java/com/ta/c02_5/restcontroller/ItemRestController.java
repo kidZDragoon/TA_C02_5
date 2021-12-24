@@ -58,7 +58,6 @@ public class ItemRestController {
         pegawai.setCounter(pegawai.getCounter() + 1);
         pegawaiService.updatePegawai(pegawai);
 
-
         return response;
     }
 }
