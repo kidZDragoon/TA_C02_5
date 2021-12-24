@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu" >
                         <li class="dropdown-item" ><a type="submit" class="nav-link text-dark" th:href="@{/user/addUser}"> Tambah Pengguna </a></li>
                     </ul>
-                </a></li>
+                    </a></li>
                 <li sec:authorize="hasAnyAuthority('ADMIN', 'FACTORY_MANAGER')" class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='pegawai'} ? 'active'" th:href="@{/user/viewall}">
                     Pegawai<span class="sr-only"></span>
                 </a></li>
@@ -58,8 +58,8 @@
                 <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='produksi'} ? 'active'" th:href="@{/produksi/viewall}">
                     Produksi<span class="sr-only"></span>
                 </a></li>
-                
-                <li class="nav-item" sec:authorize="hasAnyAuthority('STAFF_KURIR', 'STAFF_OPERASIONAL')"><a class="nav-link font-weight-bold" th:classappend="${params=='delivery'} ? 'active'" th:href="@{/delivery/viewall}">
+
+                <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='delivery'} ? 'active'" th:href="@{/delivery/viewall}">
                     Delivery<span class="sr-only"></span>
                 </a></li>
                 
