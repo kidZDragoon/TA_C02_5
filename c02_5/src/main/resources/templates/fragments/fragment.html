@@ -62,6 +62,7 @@
                 <li class="nav-item" sec:authorize="hasAnyAuthority('STAFF_KURIR', 'STAFF_OPERASIONAL')"><a class="nav-link font-weight-bold" th:classappend="${params=='delivery'} ? 'active'" th:href="@{/delivery/viewall}">
                     Delivery<span class="sr-only"></span>
                 </a></li>
+                
                 <li class="nav-item"><a class="nav-link font-weight-bold" th:classappend="${params=='mesin'} ? 'active'" th:href="@{/mesin/list-mesin}">
                     Mesin<span class="sr-only"></span>
                 </a></li>
