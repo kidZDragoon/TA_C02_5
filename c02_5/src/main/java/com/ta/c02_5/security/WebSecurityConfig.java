@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/request-update-item/viewall").hasAnyAuthority("STAFF_GUDANG", "STAFF_OPERASIONAL")
                 .antMatchers("/request-update-item/update/*").hasAnyAuthority("STAFF_GUDANG")
                 .antMatchers("/user/viewall/**").hasAnyAuthority("ADMIN", "FACTORY_MANAGER")
-                .antMatchers("/delivery/viewall/").hasAnyAuthority("STAFF_KURIR", "STAFF_OPERASIONAL")
+                .antMatchers("/delivery/viewall/**").hasAnyAuthority("STAFF_KURIR", "STAFF_OPERASIONAL")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
