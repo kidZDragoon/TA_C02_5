@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/request-update-item/viewall").hasAnyAuthority("STAFF_GUDANG", "STAFF_OPERASIONAL")
                 .antMatchers("/request-update-item/update/*").hasAnyAuthority("STAFF_GUDANG")
                 .antMatchers("/user/viewall/**").hasAnyAuthority("ADMIN", "FACTORY_MANAGER")
+                .antMatchers("/delivery/viewall/").hasAnyAuthority("STAFF_KURIR", "STAFF_OPERASIONAL")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -47,6 +48,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     public BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
     }
+
+
+
+
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder)
+//                .withUser("AdminFactory").password(encoder.encode("Admin123"))
+//                .roles("ADMIN");
+//
+//        BCryptPasswordEncoder encoder2 = new BCryptPasswordEncoder();
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder2)
+//                .withUser("FactoryManager").password(encoder.encode("Manager123"))
+//                .roles("FACTORY_MANAGER");
+//    }
+
+
 
     @Autowired
     private UserDetailsService userDetailsService;

@@ -58,4 +58,9 @@ public class ProduksiServiceImpl implements ProduksiService {
         }
         return null;
     }
+
+    @Override
+    public void addProduksi(ProduksiModel produksi) {
+        produksiDB.save(produksi);
+    }
 }

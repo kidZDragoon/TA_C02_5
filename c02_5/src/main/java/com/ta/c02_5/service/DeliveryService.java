@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface DeliveryService {
     List<DeliveryModel> getDeliveryList();
-    DeliveryModel getDeliveryByIdDelivery(Long idDelivery);
+    DeliveryModel getDeliveryByIdDelivery(Integer idDelivery);
     DeliveryModel getDeliveryByPegawai(Long pegawai);
+    DeliveryModel addDelivery(DeliveryModel deliveryModel);
 }
