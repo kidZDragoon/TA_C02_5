@@ -13,6 +13,7 @@ public interface ItemRestService {
     Mono<HashMap> updateStokItem (ItemDetail item);
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
+<<<<<<< HEAD
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
 <<<<<<< HEAD
@@ -38,4 +39,6 @@ public interface ItemRestService {
 >>>>>>> parent of f88f595 (Feat/auth (#37))
 =======
 >>>>>>> parent of 575c8b9 (Feat/auth (#36))
+=======
+>>>>>>> parent of b3ec948 (Feat/auth (#35))
 }
