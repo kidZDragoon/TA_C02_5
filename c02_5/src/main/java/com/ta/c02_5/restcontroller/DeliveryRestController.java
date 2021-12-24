@@ -61,8 +61,10 @@ public class DeliveryRestController {
         for(DeliveryDetail deliveryDetail:cabangDelivery) {
             if(idCabang.equals(deliveryDetail.getIdCabang())) {
                 deliveryModel.setSent(true);
+                deliveryModel.setTanggalDikirim(new java.util.Date());
                 deliveryService.addDelivery(deliveryModel);
-                pegawaiModel.setCounter(counter++);
+                pegawaiModel.setCounter(pegawaiModel.getCounter() + 1);
+                pegawaiService.updatePegawai(pegawaiModel);
                 model.addAttribute("deliveryDetail", deliveryDetail);
                 model.addAttribute("deliveryModel", deliveryModel);
                 return "cabang-found";
