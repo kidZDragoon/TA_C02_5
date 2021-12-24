@@ -4,7 +4,6 @@ import com.ta.c02_5.model.ProduksiModel;
 import com.ta.c02_5.rest.ItemDetail;
 
 public interface ItemService {
-
     ProduksiModel updateItem(ProduksiModel produksi);
-     Integer assignKategori(ItemDetail item);
+    Integer assignKategori(ItemDetail item);
 }
