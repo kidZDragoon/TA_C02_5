@@ -39,9 +39,8 @@ public class DeliveryModel {
     @Column(name= "tanggal_dibuat", nullable = false)
     private Date tanggalDibuat;
 
-    @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name= "tanggal_dikirim", nullable = false)
+    @Column(name= "tanggal_dikirim")
     private Date tanggalDikirim;
 
     @NotNull

@@ -1,9 +1,6 @@
 package com.ta.c02_5.controller;
 
-import com.ta.c02_5.model.MesinModel;
-import com.ta.c02_5.model.PegawaiModel;
-import com.ta.c02_5.model.ProduksiModel;
-import com.ta.c02_5.model.RequestUpdateItemModel;
+import com.ta.c02_5.model.*;
 import com.ta.c02_5.rest.ItemDetail;
 import com.ta.c02_5.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,31 +12,21 @@ import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Controller
+@RequestMapping("/request-update-item")
 public class RequestUpdateItemController {
+    @Autowired private DeliveryService deliveryService;
+    @Autowired private ItemRestService itemRestService;
+    @Autowired private ItemService itemService;
+    @Autowired private MesinService mesinService;
+    @Autowired private PegawaiService pegawaiService;
+    @Autowired private ProduksiService produksiService;
+    @Autowired private RequestUpdateItemService requestUpdateItemService;
+    @Autowired private RoleService roleService;
 
-    @Qualifier("requestUpdateItemServiceImpl")
-    @Autowired
-    private RequestUpdateItemService requestUpdateItemService;
-
-    @Autowired
-    private ItemRestService itemRestService;
-
-    @Autowired
-    private ItemService itemService;
-
-    @Autowired
-    private MesinService mesinService;
-
-    @Autowired
-    private PegawaiService pegawaiService;
-
-    @RequestMapping("/request-update-item/viewall")
+    @RequestMapping("/viewall")
     public String listRequestUpdateItem(Model model) {
         List<RequestUpdateItemModel> listRequestUpdateItem = requestUpdateItemService.getRequestUpdateItemList();
         model.addAttribute("listRequestUpdateItem", listRequestUpdateItem);
@@ -48,7 +35,7 @@ public class RequestUpdateItemController {
         return "viewall-request-update-item";
     }
 
-    @GetMapping("/request-update-item/update/{idRequestUpdateItem}")
+    @GetMapping("/update/{idRequestUpdateItem}")
     public String updateRequestUpdateItem(@PathVariable Integer idRequestUpdateItem,
                                           Model model)
     {
@@ -63,10 +50,9 @@ public class RequestUpdateItemController {
         return "update-stok-item-request-update-item";
     }
 
-    @PostMapping("/request-update-item/update")
+    @PostMapping("/update")
     public String updateRequestUpdateItemSubmit(
             @ModelAttribute ProduksiModel produksi,
-            Integer tambahan_stok,
             String uuid,
             HttpServletRequest request,
             Integer idMesin,
@@ -74,56 +60,103 @@ public class RequestUpdateItemController {
     ) {
         RequestUpdateItemModel requestUpdateItem = requestUpdateItemService.getRequestUpdateItemByIdRequestUpdateItem(idRequestUpdateItem);
         ItemDetail itemDetail = itemRestService.getItemByUUID(uuid);
-        int idKategori = itemService.assignKategori(itemDetail);
 
-        System.out.println(itemDetail.getStok());
-        System.out.println(tambahan_stok);
-        // Menambahkan stok
-        itemDetail.setStok(itemDetail.getStok() + tambahan_stok);
-
-        System.out.println(itemDetail.getStok());
+        itemDetail.setStok(itemDetail.getStok() + requestUpdateItem.getTambahanStok());
 
         Mono<HashMap> update = itemRestService.updateStokItem(itemDetail);
         String status = update.block().get("status").toString();
 
         if(status.equals("200")){
-            Date date = new java.util.Date();
-            produksi.setIdItem(uuid);
-            produksi.setTanggalProduksi(date);
-            produksi.setIdKategori(idKategori);
-            produksi.setTambahanStok(tambahan_stok);
-
-            // Menambahkan counter pada pegawai
             Principal principal = request.getUserPrincipal();
             PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
-            pegawai.setCounter(pegawai.getCounter() + 1);
 
-            // Set ID Pegawai
-            produksi.setPegawai(pegawai);
-
-            // Mengurangi kapasitas mesin
             MesinModel mesin = mesinService.findByIdMesin(idMesin);
-            mesin.setKapasitas(mesin.getKapasitas() - 1);
 
-            // Set ID Mesin
+            produksi.setIdItem(uuid);
+            produksi.setIdKategori(requestUpdateItem.getIdKategori());
+            produksi.setIdCabang(requestUpdateItem.getIdCabang());
+            produksi.setTambahanStok(requestUpdateItem.getTambahanStok());
+            produksi.setTanggalProduksi(new java.util.Date());
+            produksi.setPegawai(pegawai);
+            produksi.setRequestUpdateItem(requestUpdateItem);
             produksi.setMesin(mesin);
 
-            // Bound ProduksiModel to RequestUpdateItemModel
-            produksi.setRequestUpdateItem(requestUpdateItem);
+            produksiService.addProduksi(produksi);
 
-            // Save ProduksiModel to database
-            itemService.updateItem(produksi);
+            mesin.setKapasitas(mesin.getKapasitas() - 1);
+            mesinService.updateMesin(mesin);
 
-            // Change Executed State
-            System.out.println(requestUpdateItem.isExecuted());
             requestUpdateItem.setExecuted(true);
-            System.out.println(requestUpdateItem.isExecuted());
             requestUpdateItemService.updateRequestItemModel(requestUpdateItem);
+
+            pegawai.setCounter(pegawai.getCounter() + 1);
+            pegawaiService.updatePegawai(pegawai);
 
             return "update-stok";
         }else{
             return "gagalUpdate";
         }
 
+    }
+
+    @GetMapping("/assign-kurir/{idRequestUpdateItem}")
+    public String assignKurir(
+            @PathVariable Integer idRequestUpdateItem,
+            Model model
+    ) {
+        RequestUpdateItemModel requestUpdateItem = requestUpdateItemService.getRequestUpdateItemByIdRequestUpdateItem(idRequestUpdateItem);
+
+        List<RoleModel> listRole = roleService.getListRole();
+
+        RoleModel kurirRole = new RoleModel();
+        for (RoleModel role : listRole) {
+            if (role.getNamaRole().equalsIgnoreCase("STAFF_KURIR")) {
+                kurirRole = role;
+                break;
+            }
+        }
+
+        List<PegawaiModel> listKurir = pegawaiService.getListUserByRole(kurirRole);
+
+        DeliveryModel delivery = new DeliveryModel();
+
+        model.addAttribute("delivery", delivery);
+        model.addAttribute("listKurir", listKurir);
+        model.addAttribute("requestUpdateItem", requestUpdateItem);
+
+
+        return "form-assign-kurir";
+    }
+
+    @PostMapping("/assign-kurir")
+    public String assignKurirSubmit(
+            @ModelAttribute DeliveryModel delivery,
+            HttpServletRequest request,
+            String usernameKurir,
+            Integer idRequestUpdateItem
+    ) {
+        RequestUpdateItemModel requestUpdateItem = requestUpdateItemService.getRequestUpdateItemByIdRequestUpdateItem(idRequestUpdateItem);
+
+        PegawaiModel kurir = pegawaiService.findByUsername(usernameKurir);
+
+        delivery.setIdKurir(kurir.getIdPegawai());
+        delivery.setIdCabang(requestUpdateItem.getIdCabang());
+        delivery.setTanggalDibuat(Calendar.getInstance().getTime());
+        delivery.setTanggalDikirim(null);
+        delivery.setSent(false);
+        delivery.setRequestUpdateItem(requestUpdateItem);
+        delivery.setPegawai(kurir);
+
+        deliveryService.addDelivery(delivery);
+
+        requestUpdateItem.setIdDelivery(delivery.getIdDelivery());
+        requestUpdateItemService.updateRequestItemModel(requestUpdateItem);
+
+        Principal principal = request.getUserPrincipal();
+        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
+        pegawai.setCounter(pegawai.getCounter() + 1);
+        pegawaiService.updatePegawai(pegawai);
+
+        return "assign-kurir";
     }
 }

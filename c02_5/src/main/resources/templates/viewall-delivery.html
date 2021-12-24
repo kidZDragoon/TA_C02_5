@@ -23,6 +23,7 @@
                             <th>Pegawai</th>
                             <th>Tanggal Dibuat</th>
                             <th>Tanggal Dikirim</th>
+                            <th>Keterangan</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,8 @@
                             <td th:text="${delivery.pegawai.nama}"></td>
                             <td th:text="${delivery.tanggalDibuat}"></td>
                             <td th:text="${delivery.tanggalDikirim}"></td>
+                            <td th:if="${delivery.sent == false}">Perlu Dikirim</td>
+                            <td th:if="${delivery.sent == true}">Terkirim</td>
                         </tr>
                         </tbody>
                     </table>
