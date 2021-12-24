@@ -52,12 +52,12 @@ public class ItemRestController {
         response.setStatus(200);
         response.setResult(itemRestService.getProposedItemHashMap(item));
 
+
         //menambahkan counter pada pegawai
         Principal principal = request.getUserPrincipal();
         PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
         pegawai.setCounter(pegawai.getCounter() + 1);
         pegawaiService.updatePegawai(pegawai);
-
 
         return response;
     }

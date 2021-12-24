@@ -2,9 +2,12 @@ package com.ta.c02_5.service;
 
 import com.ta.c02_5.model.ItemModel;
 import com.ta.c02_5.rest.ItemDetail;
+import com.ta.c02_5.rest.ProposedItemDetail;
 import com.ta.c02_5.rest.Setting;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -17,9 +20,11 @@ import java.util.List;
 @Transactional
 public class ItemRestServiceImpl implements ItemRestService{
     private final WebClient webClient;
+    private final WebClient webClient2;
 
     public ItemRestServiceImpl(WebClient.Builder webClientBuilder){
         this.webClient = webClientBuilder.baseUrl(Setting.itemUrl).build();
+        this.webClient2 = webClientBuilder.baseUrl(Setting.bisnisUrl).build();
     }
 
     @Override
@@ -102,5 +107,20 @@ public class ItemRestServiceImpl implements ItemRestService{
         result.add(proposedItemHP);
 
         return result;
+    }
+
+    @Override
+    public Mono<ItemDetail> postItem(ItemModel item) {
+        MultiValueMap<String, Object> data = new LinkedMultiValueMap<>();
+        data.add("name", item.getNama());
+        data.add("stock", item.getStok());
+        data.add("price", item.getHarga());
+        data.add("category", item.getKategori());
+
+        System.out.println(data);
+        return this.webClient2.post().uri("")
+                .syncBody(data)
+                .retrieve()
+                .bodyToMono(ItemDetail.class);
     }
 }

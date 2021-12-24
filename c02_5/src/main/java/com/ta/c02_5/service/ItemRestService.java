@@ -2,6 +2,7 @@ package com.ta.c02_5.service;
 
 import com.ta.c02_5.model.ItemModel;
 import com.ta.c02_5.rest.ItemDetail;
+import com.ta.c02_5.rest.ProposedItemDetail;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
@@ -12,5 +13,6 @@ public interface ItemRestService {
     ItemDetail getItemByUUID(String uuid);
     Mono<HashMap> updateStokItem (ItemDetail item);
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
+    Mono<ItemDetail> postItem(ItemModel item);
 
 }

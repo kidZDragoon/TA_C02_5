@@ -13,6 +13,27 @@
 <div class="container">
     <div class="m-4">
         <h1 th:text="'Item berhasil ditambahkan.'"></h1>
+        <h4 th:text="'Detail Item:'"></h4>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>Nama</td>
+                <td th:text="${item.nama}"></td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td th:text="${item.harga}"></td>
+            </tr>
+            <tr>
+                <td>Stok</td>
+                <td th:text="${item.stok}"></td>
+            </tr>
+            <tr>
+                <td>Kategori</td>
+                <td th:text="${item.kategori}"></td>
+            </tr>
+            </tbody>
+        </table>
         <br>
         <a class="btn btn-secondary" href="/item/propose">Kembali</a>
     </div>

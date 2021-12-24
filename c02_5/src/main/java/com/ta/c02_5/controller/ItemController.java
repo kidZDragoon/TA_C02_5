@@ -80,9 +80,18 @@ public class ItemController {
     @PostMapping("/propose")
     public String proposeItemSubmit(
             @ModelAttribute ItemModel item,
+            HttpServletRequest request,
             Model model
     ) {
         model.addAttribute("item", item);
+        System.out.println(itemRestService.postItem(item));
+
+        //menambahkan counter pada pegawai
+        Principal principal = request.getUserPrincipal();
+        PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
+        pegawai.setCounter(pegawai.getCounter() + 1);
+        pegawaiService.updatePegawai(pegawai);
+
         return "submit-propose-item";
     }
 
@@ -130,6 +139,7 @@ public class ItemController {
             Principal principal = request.getUserPrincipal();
             PegawaiModel pegawai = pegawaiService.findByUsername(principal.getName());
             pegawai.setCounter(pegawai.getCounter() + 1);
+            pegawaiService.updatePegawai(pegawai);
 
             //set id_pegawai
             produksi.setPegawai(pegawai);
