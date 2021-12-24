@@ -19,4 +19,6 @@ public interface ItemRestService {
 
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
+    List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
+
 }
