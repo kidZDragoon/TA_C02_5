@@ -20,6 +20,7 @@ public interface ItemRestService {
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
 <<<<<<< HEAD
@@ -27,6 +28,8 @@ public interface ItemRestService {
     List<HashMap<String, Object>> getProposedItemHashMap(ItemModel proposedItem);
 
 >>>>>>> parent of 02fed9f (Feat/auth (#40))
+=======
+>>>>>>> parent of 7251d35 (Feat/auth (#38))
 =======
 >>>>>>> parent of 7251d35 (Feat/auth (#38))
 }
