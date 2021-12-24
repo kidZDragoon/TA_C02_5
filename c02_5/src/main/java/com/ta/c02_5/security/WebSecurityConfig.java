@@ -50,14 +50,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         return new BCryptPasswordEncoder();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        auth.inMemoryAuthentication()
-                .passwordEncoder(encoder)
-                .withUser("factory_manager").password(encoder.encode("manager"))
-                .roles("FACTORY_MANAGER");
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(encoder)
+//                .withUser("factory_manager").password(encoder.encode("manager"))
+//                .roles("FACTORY_MANAGER");
+//    }
 
     @Autowired
     private UserDetailsService userDetailsService;
